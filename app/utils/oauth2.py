@@ -3,10 +3,9 @@ from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from . import schema
-from . models.user import User
-from .database import get_db
-from .config import settings
+from ..models.user import User
+from ..db.database import get_db
+from ..config import settings
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='login')
 
