@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .models import user, product, business, category
-from .routes import user, business, product, category
+from .routes import user
 from .db.database import Base, engine
 from .config import settings
 

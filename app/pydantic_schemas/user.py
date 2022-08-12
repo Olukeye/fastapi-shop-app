@@ -1,4 +1,5 @@
 from pydantic import BaseModel,EmailStr, constr
+from ..utils.date_stuff import create_customised_datetime
 from pydantic.types import conint
 from  datetime import datetime
 from decimal import Decimal
@@ -12,24 +13,20 @@ class User(BaseModel):
     verified: Optional[str]
     role: Optional[str]
     created_at: Optional[str]
-    update_at: Optional[str]
-    
+    update_at: Optional[str] = None
     
 class CreateUser(User):
      pass
  
-
-
 class UserOpt(BaseModel):
     id: int
     username: str
     email: EmailStr
     verified: str
-    created_at: datetime
+    created_at: str = create_customised_datetime
     
     class Config:
         orm_mode = True
-
 
 class UserUpdate(BaseModel):
     username: Optional[str]
