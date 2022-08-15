@@ -31,7 +31,17 @@ def create_new_user(db: Session, user: CreateUser):
     
     return newUser
 
-def get_user(db: Session, id: int):
+def get_user_by_id(db: Session, id: int):
     user = db.query(User).filter(User.id == id).first()
     return user
+    
+
+def update_user(db: Session, user:User, id: int, values: Dict={}):
+    values['updated_at'] = create_customised_datetime()
+    user_update = db.query(User).filter(User.id == id)
+    
+    user_update.update(values)
+    db.commit()
+    
+    return user_update.first()
     
