@@ -48,3 +48,9 @@ def get_current_user(token = Depends(oauth2_scheme), db: Session = Depends(get_d
     user = db.query(User).filter(User.id == token.id).first()
 
     return user
+
+
+def get_user_status(current_user: User = Depends(get_current_user)):
+    if not current_user.status != active:
+            raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user

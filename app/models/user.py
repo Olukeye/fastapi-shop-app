@@ -14,8 +14,8 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     verified = Column(Boolean, server_default="False", nullable=False)
-    # is_active = Column(String, server_default="False", nullable=False)
-    role = Column(Boolean, nullable=False, server_default="False")
+    status = Column(String, nullable=False)
+    role = Column(String, nullable=False)
     created_at = Column(String, nullable=False)
     updated_at = Column(String, nullable=False)
 
@@ -23,7 +23,7 @@ class User(Base):
 def create_new_user(db: Session, user: CreateUser):
     
     newUser = User(username=user.username, email=user.email, password=user.password, verified=user.verified,
-                   role=user.role, created_at=create_customised_datetime(), updated_at=create_customised_datetime())
+                   role=user.role, status=user.status ,created_at=create_customised_datetime(), updated_at=create_customised_datetime())
     
     db.add(newUser)
     db.commit()
