@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, BigInteger
+from ..pydantic_schemas.user import CreateUser, User, UserOpt, UserUpdate
 from ..utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
 from sqlalchemy.orm import Session
 from ..db.database import get_db, Base
 from typing import Dict
-from ..pydantic_schemas.user import CreateUser, User, UserOpt, UserUpdate
 
 
 class User(Base):

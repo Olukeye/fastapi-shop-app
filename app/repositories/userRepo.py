@@ -17,7 +17,13 @@ def register(db: Session, user:User):
 
 
 def singleUser(db: Session, id:int):
-    return get_user_by_id(db=db, id=id)
+    
+    user = get_user_by_id(db=db, id=id)
+    
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= "User not found!")
+    
+    return user
 
 
 
@@ -25,7 +31,7 @@ def updatUser(db: Session, user:UserUpdate, id: int, values: Dict={}):
     
     updated = update_user(db=db, user=user, id=id, values=values)
     
-    # if updated  is None:
-    #     raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail= "You can't perform this action!!")
-        
+    if updated  is None:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail= "You can't perform this action!!")
+    
     return updated 

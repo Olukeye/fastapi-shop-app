@@ -2,6 +2,7 @@ from fastapi import Depends, HTTPException, status
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from fastapi.security import OAuth2PasswordBearer
+from ..pydantic_schemas.token import TokenData
 from sqlalchemy.orm import Session
 from ..models.user import User
 from ..db.database import get_db
@@ -31,7 +32,7 @@ def verify_access_token(token, credentials_exception):
 
         if not id:
             raise credentials_exception
-        token_data = schema.TokenData(id=id)
+        token_data = TokenData(id=id)
     except JWTError:
         raise credentials_exception
 
