@@ -1,8 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey
+from ..pydantic_schemas.business import CreateBis, BusOpt
 from ..utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
-from ..db.database import get_db, Base
 from sqlalchemy.orm import relationship
+from ..db.database import get_db, Base
+from sqlalchemy.orm import Session
 from ..models.user import User
 from typing import Dict
 
@@ -22,4 +24,14 @@ class Business(Base):
     
     
 
-# def create_new_business(db: Session, reg: )
+def create_new_business(db: Session, user:int,  reg:CreateBis):
+    
+    newBusiness = Business(name=reg.name, state=reg.state, city=reg.city, description=reg.description,
+                           logo=reg.logo, created_at=create_customised_datetime(), updated_at=create_customised_datetime())
+    
+    db.add(newBusiness)
+    db.commit()
+    db.refresh(newBusiness)
+    
+    
+    return newBusiness

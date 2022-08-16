@@ -11,7 +11,7 @@ class Business(BaseModel):
     city: str
     description: Optional[str] = None
     logo: Optional[str] = None
-    created_at: Optional[str]
+    created_at: Optional[str] = None
     update_at: Optional[str] = None
     
     
@@ -29,15 +29,10 @@ class UserOpt(BaseModel):
         orm_mode = True
 
 
-class BusOpt(BaseModel):
+class BusOpt(Business):
     id: int
-    name: str
-    state: str
-    city: str
-    description: str
-    created_at: str = create_customised_datetime
-    updated_at: str = create_customised_datetime
-    
+    owner_id:int
+    owner: UserOpt
     class Config:
         orm_mode = True
         
