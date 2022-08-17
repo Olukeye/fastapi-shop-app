@@ -6,13 +6,13 @@ from .user import UserOpt
 
 
 class Business(BaseModel):
-    name: str
-    state: str
-    city: str
+    name: Optional[str]
+    state: Optional[str]
+    city: Optional[str]
     description: Optional[str] = None
     logo: Optional[str] = None
     created_at: Optional[str] = None
-    update_at: Optional[str] = None
+    updated_at: Optional[str] = None
     
     
 class CreateBis(Business):
@@ -31,9 +31,24 @@ class UserOpt(BaseModel):
 
 class BusOpt(Business):
     id: int
-    owner_id:int
-    owner: UserOpt
+    user_id:int
+    user: UserOpt
     class Config:
         orm_mode = True
         
+        
+class Allbiz(BaseModel):
+    Business: BusOpt
+    class Config:
+        orm_mode = True
+
+class UpdateBizz(BaseModel):
+    name: Optional[str] = None
+    state: Optional[str] = None
+    city: Optional[str] = None
+    description: Optional[str] = None
+    logo: Optional[str] = None
+    updated_at: Optional[str] = None
     
+    class Config:
+        orm_mode = True
