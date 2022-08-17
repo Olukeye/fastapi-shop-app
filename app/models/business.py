@@ -44,6 +44,13 @@ def get_all_business(db: Session,  limit: int = 3, skip: int = 2, search: Option
     return get_all
 
 
+def get_a_business(db: Session, id: int):
+    
+    singleBusiness = db.query(Business).filter(Business.id == id).first()
+    
+    return singleBusiness 
+    
+    
 def update_business(id: int, edit:UpdateBizz, db: Session, values: Dict={}):
     
     values["updated_at"] = create_customised_datetime()

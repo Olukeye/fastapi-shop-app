@@ -1,5 +1,5 @@
 from fastapi import Response, status, HTTPException, Depends
-from ..utils.model import create_new_business, get_all_business, update_business
+from ..utils.model import create_new_business, get_all_business, update_business, get_a_business
 from ..pydantic_schemas.business import *
 from sqlalchemy.orm import Session
 from typing import Dict
@@ -9,6 +9,17 @@ def create_business(db: Session, user:int, reg:CreateBis):
     return create_new_business(db=db, user=user, reg=reg)
 
 
+def singleBusiness(id: int, db: Session):
+    
+    business = get_a_business(db=db, id=id)
+    
+    if not business:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Business not found!")
+    
+    return business
+    
+    
+    
 def allBusiness(db: Session):
     return get_all_business(db=db)
 

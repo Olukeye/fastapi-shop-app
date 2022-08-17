@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response, requests, status, HTTPException, Depends, APIRouter, File, UploadFile
 from ..pydantic_schemas.business import CreateBis, Business, BusOpt, Allbiz, UpdateBizz
-from ..repositories.busisnessRepo import create_business,  allBusiness, updateBusiness
+from ..repositories.busisnessRepo import create_business,  allBusiness, updateBusiness, singleBusiness
 from ..utils.oauth2 import get_current_user
 from sqlalchemy.orm import Session
 from ..db.database import get_db
@@ -23,3 +23,8 @@ async def new_business(reg:CreateBis, db: Session = Depends(get_db), user:int = 
 @router.put("/updateBusiness/{id}",status_code=status.HTTP_200_OK)
 async def business_update(id: int, edit:UpdateBizz, db: Session = Depends(get_db), user: int =Depends(get_current_user)):
     return updateBusiness(id=id, edit=edit, db=db, user=user, values=dict(edit))
+
+
+@router.get("/siglebusiness/{id}")
+async def single_business(id: int, db: Session = Depends(get_db), user: int = Depends(get_current_user)):
+    return singleBusiness(id=id, db=db)
