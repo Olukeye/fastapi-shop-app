@@ -52,6 +52,14 @@ def get_current_user(token = Depends(oauth2_scheme), db: Session = Depends(get_d
 
 
 def get_user_status(current_user: User = Depends(get_current_user)):
-    if not current_user.status != active:
+    if not current_user.status:
             raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
+
+
+
+def if_user_is_admin(current_user: User = Depends(get_user_status)):
+    if not current_user.role:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You have no permission to Create a business yet!! ")
+    
     return current_user
