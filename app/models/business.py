@@ -53,7 +53,8 @@ def get_a_business(db: Session, id: int):
     
 def update_business(id: int, edit:UpdateBizz, db: Session, values: Dict={}):
     
-    values["updated_at"] = create_customised_datetime()
+    values["updated_at"] = json.dumps(create_customised_datetime())
+    
     updated = db.query(Business).filter(Business.id == id)
     
     updated.update(values)

@@ -24,8 +24,8 @@ class UserOpt(BaseModel):
     username: str
     email: EmailStr
     verified: str
-    created_at: str = create_customised_datetime
-    updated_at: str = create_customised_datetime
+    created_at: str = create_customised_datetime()
+    updated_at: str = create_customised_datetime()
      
     class Config:
         orm_mode = True

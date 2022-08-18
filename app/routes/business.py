@@ -10,7 +10,7 @@ from typing import List
 router = APIRouter(tags = ['Business'])
 
 
-@router.get("/allbusiness")
+@router.get("/allbusiness",status_code=status.HTTP_200_OK)
 async def get_all(db: Session = Depends(get_db), user:int =Depends(get_current_user)):
     return allBusiness(db=db)
 
@@ -20,11 +20,11 @@ async def new_business(reg:CreateBis, db: Session = Depends(get_db), user:int = 
     return create_business(db=db, user=user, reg=reg)
 
 
-@router.put("/updateBusiness/{id}",status_code=status.HTTP_200_OK)
-async def business_update(id: int, edit:UpdateBizz, db: Session = Depends(get_db), user: int =Depends(if_user_is_admin)):
-    return updateBusiness(id=id, edit=edit, db=db, user=user, values=dict(edit))
-
-
 @router.get("/siglebusiness/{id}")
 async def single_business(id: int, db: Session = Depends(get_db), user: int = Depends(get_current_user)):
     return singleBusiness(id=id, db=db)
+
+
+@router.put("/updateBusiness/{id}",status_code=status.HTTP_200_OK)
+async def business_update(id: int, edit:UpdateBizz, db: Session = Depends(get_db), user: int =Depends(if_user_is_admin)):
+    return updateBusiness(id=id, edit=edit, db=db, user=user, values=dict(edit))
