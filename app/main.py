@@ -3,7 +3,6 @@ from .models import user, product, business, category
 from .routes import user, auth, business, product, category
 from .db.database import Base, engine
 from .config import settings
-
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()

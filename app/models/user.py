@@ -36,6 +36,15 @@ def get_user_by_id(db: Session, id: int):
     return user
     
 
+def get_user_by_username(db: Session, username:str=None):
+    user = db.query(User).filter(User.username == username).first()
+    return user
+
+def get_user_by_email(db: Session, email:str=None):
+    user = db.query(User).filter(User.email == email).first()
+    return user
+
+
 def update_user(db: Session, user:User, id: int, values: Dict={}):
     values['updated_at'] = create_customised_datetime()
     user_update = db.query(User).filter(User.id == id)
