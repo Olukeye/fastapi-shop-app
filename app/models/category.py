@@ -9,7 +9,7 @@ from typing import Dict, Optional
 
 
 class Category(Base):
-    __tablename__ = 'category'
+    __tablename__ = 'categories'
 
     id = Column(BigInteger, primary_key=True)
     name = Column(String, unique=True, nullable=False)

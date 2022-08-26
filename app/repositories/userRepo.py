@@ -5,7 +5,7 @@ from ..pydantic_schemas.user import *
 from ..utils.hashVerify import hash
 from sqlalchemy.orm import Session
 from ..db.database import get_db
-# from ..mails.email import send_email
+from ..mails.email import send_email
 from typing import Dict
 
 
@@ -14,7 +14,7 @@ def register(db: Session, user:User):
   
     hashed_password = hash(user.password)
     user.password = hashed_password
-    # await send_email([user.email], user)
+    # return send_email([user.email], user)
     return create_new_user(db=db, user=user)
     
 

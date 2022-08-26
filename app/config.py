@@ -11,9 +11,9 @@ class Settings(BaseSettings):
     access_token_expire_minute: int
     email: str
     email_password: str
-    flw_secret_key: str
-    flw_encryption_key: str
-    flw_public_key: str
+    # flw_secret_key: str
+    # flw_encryption_key: str
+    # flw_public_key: str
     
     
     class Config:

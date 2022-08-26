@@ -27,9 +27,9 @@ conf = ConnectionConfig(
 
 def send_email(email: List, user:UserOpt):
     
-    token_data = {"id": user.id, "username": user.username}
+    token_data = {"id": id}
     
-    token = jwt.encode(token_data, settings.secret_key)
+    token = jwt.encode(token_data, settings.secret_key, settings.algorithm)
 
     
     template = """
