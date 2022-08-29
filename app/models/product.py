@@ -15,20 +15,19 @@ class Product(Base):
     name = Column(String, nullable=False)
     state = Column(String, nullable=False)
     city = Column(String, nullable=False)
+    slug = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
     image = Column(String, nullable=False)
     category_id = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
-    created_at = Column(String, nullable=False, server_default=text('now()'))
-    updated_at = Column(String, nullable=False, server_default=text('now()'))
-    business_id = Column(BigInteger, ForeignKey("businesses.id", ondelete="CASCADE"), nullable=False)
-    business = relationship("Business")
+    created_at = Column(String,server_default=text('now()'))
+    updated_at = Column(String, server_default=text('now()'))
     category = relationship("Category")
 
 
 def create_new_product(db: Session, prod:ProdCreate):
     
     newProd = Product(name=prod.name, state=prod.state, city=prod.city, 
-                      description=prod.description, image=prod.image)
+                      description=prod.description, image=prod.image, category_id=prod.category_id, slug=prod.slug)
     
     db.add(newProd)
     db.commit()

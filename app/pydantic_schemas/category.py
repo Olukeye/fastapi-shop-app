@@ -7,6 +7,8 @@ from .user import UserOpt
 
 class Category(BaseModel):
     name: str
+    slug: str
+    business_id: int
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
     
@@ -20,6 +22,7 @@ class CreateCate(Category):
 
 class CatOpt(BaseModel):
     name: str
+    slug: str
     created_at: str = create_customised_datetime()
     class Config:
         orm_mode = True

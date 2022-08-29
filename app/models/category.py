@@ -13,14 +13,15 @@ class Category(Base):
 
     id = Column(BigInteger, primary_key=True)
     name = Column(String, unique=True, nullable=False)
-    created_at = Column(String, nullable=False, server_default=text('now()'))
-    updated_at = Column(String, nullable=False, server_default=text('now()'))
+    slug = Column(String, unique=True, nullable=False)
+    business_id = Column(BigInteger, ForeignKey("businesses.id"), nullable=False)
+    created_at = Column(String, server_default=text('now()'))
+    updated_at = Column(String, server_default=text('now()'))
+    business = relationship("Business")
     
-    
-
 
 def create_category(db: Session, cat: CreateCate):
-    categ = Category(name=cat.name, created_at=create_customised_datetime(),updated_at=create_customised_datetime())
+    categ = Category(name=cat.name, slug=cat.slug, business_id=cat.business_id,created_at=create_customised_datetime(),updated_at=create_customised_datetime())
     
     db.add(categ)
     db.commit()

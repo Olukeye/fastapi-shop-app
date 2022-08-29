@@ -11,6 +11,7 @@ class Product(BaseModel):
     description: Optional[str] = None
     image: Optional[str] = None
     category_id: int
+    slug: str
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
 
