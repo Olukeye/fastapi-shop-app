@@ -9,3 +9,7 @@ from typing import Dict
 
 def newProduct(db: Session, prod:ProdCreate):
     return create_new_product(db=db, prod=prod)
+
+
+def allProduct(db: Session):
+    return get_allProducts(db=db)

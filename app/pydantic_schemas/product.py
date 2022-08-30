@@ -9,6 +9,7 @@ class Product(BaseModel):
     state: Optional[str] = None
     city: Optional[str] = None
     description: Optional[str] = None
+    price: int
     image: Optional[str] = None
     category_id: int
     slug: str
@@ -29,6 +30,7 @@ class ProdOpt(BaseModel):
     state: str
     city: str
     description:str
+    price: int
     image: str
     category_id: int
     created_at: str = create_customised_datetime()

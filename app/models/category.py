@@ -21,7 +21,10 @@ class Category(Base):
     
 
 def create_category(db: Session, cat: CreateCate):
-    categ = Category(name=cat.name, slug=cat.slug, business_id=cat.business_id,created_at=create_customised_datetime(),updated_at=create_customised_datetime())
+    categ = Category(name=cat.name, slug=cat.slug, business_id=cat.business_id,
+                     created_at=create_customised_datetime(),updated_at=create_customised_datetime())
+    
+    
     
     db.add(categ)
     db.commit()
