@@ -43,8 +43,16 @@ def create_new_product(db: Session, prod:ProdCreate):
     
     return newProd
 
-def get_allProducts(db: Session, skip: int =0, limit:int =10, search:Optional[str] = ""):
+
+def get_allProducts(db: Session, skip: int = 0, limit:int =10,  search: Optional[str] = ""):
     products = db.query(Product).join(Category, Category.business_id == Category.id,
         isouter=True).group_by(Product.id).filter(Product.name.contains(search)).limit(limit).offset(skip).all()
     
     return products
+
+
+def  get_single_product(id: int, db: Session):
+    product = db.query(Product).join(Category, Category.business_id == Category.id, 
+                   isouter=True).group_by(Product.id).filter(Product.id == id).first()
+    
+    return product

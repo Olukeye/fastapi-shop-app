@@ -1,7 +1,7 @@
 from pydantic import BaseModel,EmailStr, constr
 from ..utils.date_stuff import create_customised_datetime
 from pydantic.types import conint
-from typing import Optional
+from typing import Optional, List
 from .category import CatOpt
 
 class Product(BaseModel):
@@ -20,6 +20,7 @@ class ProdCreate(Product):
     pass
 
 class CatOpt(BaseModel):
+    id:int
     name: str
     created_at: str = create_customised_datetime()
     class Config:
@@ -39,6 +40,7 @@ class ProdOpt(BaseModel):
         
 class AllProd(BaseModel):
     Product: ProdOpt
+    categories: CatOpt 
     class Config:
         orm_mode = True
 
