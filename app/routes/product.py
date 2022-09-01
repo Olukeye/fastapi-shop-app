@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response, requests, status, HTTPException, Depends, APIRouter, File, UploadFile
 from ..pydantic_schemas.product import *
-from ..repositories.productRepo import newProduct, allProduct, singleProduct, updateProduct
+from ..repositories.productRepo import newProduct, allProduct, singleProduct, updateProduct, deleteProduct
 from ..pydantic_schemas.product import *
 from ..utils.oauth2 import get_current_user, if_user_is_admin
 from sqlalchemy.orm import Session
@@ -25,6 +25,10 @@ async def createProduct( prod:ProdCreate, db: Session = Depends(get_db), user: i
 async def single_product(id: int, db: Session = Depends(get_db), user: int = Depends(get_current_user)):
      return singleProduct(id=id, db=db)
 
+
+@router.delete("/deleteProduct/{id}", status_code = status.HTTP_204_NO_CONTENT)
+async def delete_prod(id: int, db: Session = Depends(get_db), user: int = Depends(if_user_is_admin)):
+     return deleteProduct(id=id, user=user, db=db)
 
 
 @router.put("/editproduct/{id}", status_code=status.HTTP_200_OK)

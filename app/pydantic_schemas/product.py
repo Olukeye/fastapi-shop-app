@@ -45,9 +45,7 @@ class AllProd(BaseModel):
         orm_mode = True
 
 class ProdUpdate(BaseModel):
-    name: Optional[str] = None
-    state: Optional[str] = None
-    city: Optional[str] = None
+    name: str
     description: Optional[str] = None
     price:Optional[int] = None
     image: Optional[str] = None

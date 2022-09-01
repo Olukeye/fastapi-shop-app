@@ -1,4 +1,5 @@
 from fastapi import Response, status, HTTPException, Depends
+from ..utils.oauth2 import get_current_user, if_user_is_admin
 from ..utils.model import *
 from ..pydantic_schemas.product import *
 from sqlalchemy.orm import Session
@@ -31,3 +32,13 @@ def updateProduct(id: int, edit: ProdUpdate, db: Session, values: Dict={}):
         raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail = f"You can't perform this action!")
     
     return edited
+
+
+def deleteProduct(id: int, db: Session, user: int):
+    
+    destroy = delete_product(id=id, user=user, db=db)
+    
+    if not destroy:
+        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND,  detail=f"Product id:{id} does not exist!")
+    
+    return destroy

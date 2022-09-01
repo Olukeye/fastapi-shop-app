@@ -31,11 +31,6 @@ def create_new_product(db: Session, prod:ProdCreate):
     newProd = Product(name=prod.name, state=prod.state, city=prod.city, 
                         description=prod.description, price=prod.price,
                             image=prod.image, category_id=prod.category_id, slug=prod.slug)
-    
-    # percentage_discount = 90
-    
-    # if newProd.price >= 0:
-    #     newProd.percentage_discount = ((newProd.price - newProd.promo_price) / newProd.price)  * 100
         
     db.add(newProd)
     db.commit()
@@ -66,5 +61,15 @@ def update_product(id: int, edit: ProdUpdate, db: Session, values: Dict={}):
     editProduct.update(values)
     db.commit()
     
-    
     return editProduct.first()
+
+
+def delete_product(id: int, db: Session, user: int):
+    
+    delProd = db.query(Product).filter(Product.id == id)
+    
+    destroy = delProd.first()
+    delProd.delete()
+    db.commit()
+
+    return  destroy
