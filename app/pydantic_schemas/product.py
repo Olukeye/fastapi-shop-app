@@ -49,7 +49,8 @@ class ProdUpdate(BaseModel):
     state: Optional[str] = None
     city: Optional[str] = None
     description: Optional[str] = None
-    logo: Optional[str] = None
+    price:Optional[int] = None
+    image: Optional[str] = None
     updated_at: Optional[str] = None
     
     class Config:

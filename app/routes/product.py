@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response, requests, status, HTTPException, Depends, APIRouter, File, UploadFile
 from ..pydantic_schemas.product import *
-from ..repositories.productRepo import newProduct, allProduct, singleProduct
+from ..repositories.productRepo import newProduct, allProduct, singleProduct, updateProduct
 from ..pydantic_schemas.product import *
 from ..utils.oauth2 import get_current_user, if_user_is_admin
 from sqlalchemy.orm import Session
@@ -24,3 +24,9 @@ async def createProduct( prod:ProdCreate, db: Session = Depends(get_db), user: i
 @router.get("/singleProduct/{id}")
 async def single_product(id: int, db: Session = Depends(get_db), user: int = Depends(get_current_user)):
      return singleProduct(id=id, db=db)
+
+
+
+@router.put("/editproduct/{id}", status_code=status.HTTP_200_OK)
+async def update_product(id: int, edit: ProdUpdate, db: Session = Depends(get_db), user: int = Depends(if_user_is_admin)):
+     return updateProduct(id=id, db=db, edit=edit, values=dict(edit))

@@ -51,8 +51,20 @@ def get_allProducts(db: Session, skip: int = 0, limit:int =10,  search: Optional
     return products
 
 
-def  get_single_product(id: int, db: Session):
+def get_single_product(id: int, db: Session):
     product = db.query(Product).join(Category, Category.business_id == Category.id, 
                    isouter=True).group_by(Product.id).filter(Product.id == id).first()
     
     return product
+
+
+def update_product(id: int, edit: ProdUpdate, db: Session, values: Dict={}):
+    values["updated_at"] = create_customised_datetime()
+    
+    editProduct = db.query(Product).filter(Product.id == id)
+    
+    editProduct.update(values)
+    db.commit()
+    
+    
+    return editProduct.first()
