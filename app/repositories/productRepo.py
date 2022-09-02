@@ -1,4 +1,4 @@
-from fastapi import Response, status, HTTPException, Depends
+from fastapi import Response, status, HTTPException, Depends, File, UploadFile
 from ..utils.oauth2 import get_current_user, if_user_is_admin
 from ..utils.model import *
 from ..pydantic_schemas.product import *

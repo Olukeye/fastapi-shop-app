@@ -6,16 +6,16 @@ from .category import CatOpt
 
 class Product(BaseModel):
     name: str
-    state: Optional[str] = None
-    city: Optional[str] = None
-    description: Optional[str] = None
-    price: int
-    image: Optional[str] = None
+    state:str
+    city:str
+    description:str
+    price: float
+    image:str
     category_id: int
     slug: str
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
-
+    
 class ProdCreate(Product):
     pass
 
@@ -31,7 +31,7 @@ class ProdOpt(BaseModel):
     state: str
     city: str
     description:str
-    price: int
+    price:float
     image: str
     category_id: int
     created_at: str = create_customised_datetime()
@@ -47,7 +47,7 @@ class AllProd(BaseModel):
 class ProdUpdate(BaseModel):
     name: str
     description: Optional[str] = None
-    price:Optional[int] = None
+    price:Optional[float] = None
     image: Optional[str] = None
     updated_at: Optional[str] = None
     
