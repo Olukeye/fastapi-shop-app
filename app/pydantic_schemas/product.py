@@ -2,22 +2,23 @@ from pydantic import BaseModel,EmailStr, constr
 from ..utils.date_stuff import create_customised_datetime
 from pydantic.types import conint
 from typing import Optional, List
-from .category import CatOpt
+from .category import CatOpt, Category
 
 class Product(BaseModel):
-    name: str
-    state:str
-    city:str
-    description:str
-    price: float
-    image:str
-    category_id: int
-    slug: str
-    created_at: Optional[str] = None
-    updated_at: Optional[str] = None
+    name: Optional[str] 
+    state: Optional[str] 
+    city: Optional[str] 
+    slug: Optional[str] 
+    description: Optional[str] 
+    price: Optional[str] 
+    url: Optional[str] 
+    category: Optional[int] 
+    created_at: Optional[str] = create_customised_datetime()
+    updated_at: Optional[str] = create_customised_datetime()
     
 class ProdCreate(Product):
     pass
+        
 
 class CatOpt(BaseModel):
     id:int
@@ -30,11 +31,14 @@ class ProdOpt(BaseModel):
     name: str
     state: str
     city: str
+    slug: str
     description:str
-    price:float
-    image: str
-    category_id: int
+    price:str
+    url: str
+    category: int
+    # category: CatOpt
     created_at: str = create_customised_datetime()
+    updated_at: str=  create_customised_datetime()
     class Config:
         orm_mode = True
         
@@ -48,7 +52,7 @@ class ProdUpdate(BaseModel):
     name: str
     description: Optional[str] = None
     price:Optional[float] = None
-    image: Optional[str] = None
+    url: Optional[str] = None
     updated_at: Optional[str] = None
     
     class Config:

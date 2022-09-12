@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey,
 from ..utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
 from sqlalchemy_utils import URLType
+from furl import furl
 from sqlalchemy.orm import relationship
 from ..models.business import Business
 from ..models.category import Category
@@ -19,24 +20,22 @@ class Product(Base):
     city = Column(String, nullable=False)
     slug = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
-    price = Column(BigInteger, nullable=False)
+    price = Column(String, nullable=False)
     url = Column(URLType)
-    category_id = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
+    category = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
-    category = relationship("Category")
+    # category = relationship("Category")
 
+def create_new_product(db: Session, name:str=None, city:str=None,slug:str=None, description:str=None, price:str=None, category:str=None, url:str=None,created_at:str=None ):
+    
+    newProd = Product(name=prod.name, state=state, city=city,slug=slug, description=description, 
+                                    price=price, url=url, category=category,created_at=create_customised_datetime(),updated_at=create_customised_datetime())
 
-def create_new_product(db: Session, prod:ProdCreate):
-    
-    newProd = Product(name=prod.name, state=prod.state, city=prod.city, 
-                        description=prod.description, price=prod.price, 
-                            url=prod.url, category_id=prod.category_id, slug=prod.slug)
-    
-    db.add(**newProd.dict())
+    db.add(newProd)
     db.commit()
     db.refresh(newProd)
-    
+
     return newProd
 
 
