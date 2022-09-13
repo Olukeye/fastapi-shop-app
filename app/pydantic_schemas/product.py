@@ -1,3 +1,4 @@
+from fastapi import FastAPI,File, UploadFile
 from pydantic import BaseModel,EmailStr, constr
 from ..utils.date_stuff import create_customised_datetime
 from pydantic.types import conint
@@ -5,16 +6,16 @@ from typing import Optional, List
 from .category import CatOpt, Category
 
 class Product(BaseModel):
-    name: Optional[str] 
-    state: Optional[str] 
-    city: Optional[str] 
-    slug: Optional[str] 
-    description: Optional[str] 
-    price: Optional[str] 
-    url: Optional[str] 
-    category: Optional[int] 
-    created_at: Optional[str] = create_customised_datetime()
-    updated_at: Optional[str] = create_customised_datetime()
+    name: str 
+    state: str 
+    city: str 
+    slug: str 
+    description: str 
+    price: str 
+    image: str
+    category: int 
+    created_at: str = create_customised_datetime()
+    updated_at: str = create_customised_datetime()
     
 class ProdCreate(Product):
     pass
@@ -33,8 +34,8 @@ class ProdOpt(BaseModel):
     city: str
     slug: str
     description:str
-    price:str
-    url: str
+    price:int
+ 
     category: int
     # category: CatOpt
     created_at: str = create_customised_datetime()
@@ -52,7 +53,7 @@ class ProdUpdate(BaseModel):
     name: str
     description: Optional[str] = None
     price:Optional[float] = None
-    url: Optional[str] = None
+    image: UploadFile = File(...)
     updated_at: Optional[str] = None
     
     class Config:

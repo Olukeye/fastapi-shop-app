@@ -10,6 +10,7 @@ from ..db.database import get_db, Base
 from ..pydantic_schemas.product import *
 from typing import Optional, Dict
 from sqlalchemy.orm import Session
+from ..helper import handle_file_upload
 
 
 class Product(Base):
@@ -21,16 +22,18 @@ class Product(Base):
     slug = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
     price = Column(String, nullable=False)
-    url = Column(URLType)
+    image = Column(String, nullable=True)
     category = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
     # category = relationship("Category")
 
-def create_new_product(db: Session, name:str=None, city:str=None,slug:str=None, description:str=None, price:str=None, category:str=None, url:str=None,created_at:str=None ):
+def create_new_product(db: Session, prod:ProdCreate):
     
-    newProd = Product(name=prod.name, state=state, city=city,slug=slug, description=description, 
-                                    price=price, url=url, category=category,created_at=create_customised_datetime(),updated_at=create_customised_datetime())
+    newProd = Product(name=prod.name, state=prod.state, city=prod.city,
+                                slug=prod.slug, description=prod.description, 
+                                    price=prod.price, image=handle_file_upload(prod.image), category=prod.category,created_at=create_customised_datetime(),
+                    updated_at=create_customised_datetime())
 
     db.add(newProd)
     db.commit()

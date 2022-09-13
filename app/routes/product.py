@@ -17,13 +17,13 @@ async def get_Products(db: Session = Depends(get_db), user: int = Depends(get_cu
 
 
 @router.post("/product",status_code=status.HTTP_201_CREATED, response_model=ProdOpt)
-async def createProduct (db: Session = Depends(get_db),file:UploadFile = File(...), user: int = Depends(if_user_is_admin)):
+async def createProduct(prod:ProdCreate, db: Session = Depends(get_db), user: int = Depends(if_user_is_admin)):
      with open("media/"+file.filename, "wb") as image:
         shutil.copyfileobj(file.file, image)
     
      url = str("media/"+file.filename)
      
-     return newProduct(db=db, prod=prod)
+     return newProduct(db)
 
 
 @router.get("/singleProduct/{id}")
