@@ -23,18 +23,19 @@ class Product(Base):
     description = Column(String, nullable=False)
     price = Column(String, nullable=False)
     image = Column(URLType)
-    category = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
+    category_id = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
-    # category = relationship("Category")
+    category = relationship("Category")
+
+
 
 def create_new_product(db: Session, prod:ProdCreate):
     
-    newProd = Product(name=prod.name, state=prod.state, city=prod.city,
-                                slug=prod.slug, description=prod.description, 
-                                    price=prod.price, image=prod.image,
-                                    category=prod.category,created_at=create_customised_datetime(),
-                    updated_at=create_customised_datetime())
+    newProd = Product(name=prod.name, state=prod.state, city=prod.city, slug=prod.slug,
+                            description=prod.description, price=prod.price, image=prod.image,
+                            category_id=prod.category_id, created_at=create_customised_datetime(),
+                                                            updated_at=create_customised_datetime())
 
     db.add(newProd)
     db.commit()
