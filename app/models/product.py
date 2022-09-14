@@ -22,7 +22,7 @@ class Product(Base):
     slug = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
     price = Column(String, nullable=False)
-    image = Column(String, nullable=True)
+    image = Column(URLType)
     category = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
@@ -32,7 +32,8 @@ def create_new_product(db: Session, prod:ProdCreate):
     
     newProd = Product(name=prod.name, state=prod.state, city=prod.city,
                                 slug=prod.slug, description=prod.description, 
-                                    price=prod.price, image=handle_file_upload(prod.image), category=prod.category,created_at=create_customised_datetime(),
+                                    price=prod.price, image=prod.image,
+                                    category=prod.category,created_at=create_customised_datetime(),
                     updated_at=create_customised_datetime())
 
     db.add(newProd)

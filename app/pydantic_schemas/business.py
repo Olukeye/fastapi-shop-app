@@ -6,9 +6,9 @@ from .user import UserOpt
 
 
 class Business(BaseModel):
-    name: Optional[str]
-    state: Optional[str]
-    city: Optional[str]
+    name: Optional[str] = None
+    state: Optional[str] = None
+    city: Optional[str] = None
     description: Optional[str] = None
     logo: Optional[str] = None
     created_at: Optional[str] = None

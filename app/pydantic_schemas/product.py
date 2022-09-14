@@ -6,13 +6,13 @@ from typing import Optional, List
 from .category import CatOpt, Category
 
 class Product(BaseModel):
-    name: str 
-    state: str 
-    city: str 
-    slug: str 
-    description: str 
-    price: str 
-    image: str
+    name: OPtional[str] = None 
+    state: OPtional[str] = None 
+    city: OPtional[str] = None 
+    slug: OPtional[str] = None 
+    description: OPtional[str] = None 
+    price: OPtional[str] = None 
+    image: OPtional[str] = None
     category: int 
     created_at: str = create_customised_datetime()
     updated_at: str = create_customised_datetime()

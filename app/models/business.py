@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey
 from ..pydantic_schemas.business import CreateBis, BusOpt, UpdateBizz
 from ..utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
+from sqlalchemy_utils import URLType
 from sqlalchemy.orm import relationship
 from ..db.database import get_db, Base
 from sqlalchemy.orm import Session
@@ -16,7 +17,7 @@ class Business(Base):
     state = Column(String, nullable=False)
     city = Column(String, nullable=False)
     description = Column(String, nullable=False)
-    logo = Column(String, nullable=False)
+    logo = Column(URLType)
     created_at = Column(String, nullable=False, server_default=text('now()'))
     updated_at = Column(String, nullable=False, server_default=text('now()'))
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
