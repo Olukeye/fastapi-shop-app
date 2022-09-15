@@ -13,7 +13,7 @@ from typing import Dict, Optional
 class Business(Base):
     __tablename__ = "businesses"
     id = Column(BigInteger, primary_key=True, nullable=False)
-    name = Column(String, nullable=False)
+    name = Column(String, unique=True, nullable=False)
     state = Column(String, nullable=False)
     city = Column(String, nullable=False)
     description = Column(String, nullable=False)

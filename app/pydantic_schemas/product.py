@@ -11,7 +11,7 @@ class Product(BaseModel):
     city: Optional[str] = None 
     slug: Optional[str] = None 
     description: Optional[str] = None 
-    price: Optional[str] = None 
+    price: Optional[float] = None 
     image: Optional[str] = None
     category: int 
     created_at: str = create_customised_datetime()
@@ -34,7 +34,7 @@ class ProdOpt(BaseModel):
     city: str
     slug: str
     description:str
-    price:int
+    price:float
  
     category: int
     # category: CatOpt

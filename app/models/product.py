@@ -21,7 +21,7 @@ class Product(Base):
     city = Column(String, nullable=False)
     slug = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
-    price = Column(String, nullable=False)
+    price = Column(Integer, nullable=False)
     image = Column(URLType)
     category_id = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
