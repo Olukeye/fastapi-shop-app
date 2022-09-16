@@ -17,7 +17,7 @@ class Business(Base):
     state = Column(String, nullable=False)
     city = Column(String, nullable=False)
     description = Column(String, nullable=False)
-    logo = Column(URLType)
+    url = Column(URLType, nullable=True)
     created_at = Column(String, nullable=False, server_default=text('now()'))
     updated_at = Column(String, nullable=False, server_default=text('now()'))
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
@@ -28,7 +28,7 @@ class Business(Base):
 def create_new_business(db: Session, user:int,  reg:CreateBis):
     
     newBusiness = Business(name=reg.name, state=reg.state, city=reg.city, description=reg.description,
-                           logo=reg.logo, created_at=create_customised_datetime(), updated_at=create_customised_datetime(), user=user,)
+                           url=reg.url, created_at=create_customised_datetime(), updated_at=create_customised_datetime())
     
     db.add(newBusiness)
     db.commit()

@@ -18,7 +18,7 @@ depends_on = None
 
 
 def upgrade():
-    op.create_table(  'categories',
+    op.create_table('categories',
         sa.Column('id', sa.BigInteger(),nullable=False),
             sa.Column('name', sa.String(), nullable=False),
                sa.Column('slug', sa.String(),nullable=False),
@@ -26,8 +26,8 @@ def upgrade():
                      sa.Column('created_at', sa.String(), server_default=sa.text('now()'), nullable=False),
                         sa.Column('updated_at', sa.String(), server_default=sa.text('now()'), nullable=False),
                            sa.PrimaryKeyConstraint('id'),
-                           sa.UniqueConstraint('name'),
-                           sa.UniqueConstraint('slug'),
+                               sa.UniqueConstraint('name'),
+                                  sa.UniqueConstraint('slug')
         )
     pass
 

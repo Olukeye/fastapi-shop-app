@@ -23,7 +23,7 @@ class Product(Base):
     description = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
     image = Column(URLType)
-    category_id = Column(BigInteger, ForeignKey("categories.id"), nullable=False)
+    category_id = Column(BigInteger, ForeignKey("categories.id",  ondelete="CASCADE"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
     category = relationship("Category")

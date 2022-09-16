@@ -14,7 +14,7 @@ class Category(Base):
     id = Column(BigInteger, primary_key=True)
     name = Column(String, unique=True, nullable=False)
     slug = Column(String, unique=True, nullable=False)
-    business_id = Column(BigInteger, ForeignKey("businesses.id"), nullable=False)
+    business_id = Column(BigInteger, ForeignKey("businesses.id",  ondelete="CASCADE"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
     business = relationship("Business")

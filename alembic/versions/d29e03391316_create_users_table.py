@@ -28,8 +28,8 @@ def upgrade():
                               sa.Column('role', sa.String(), nullable=False),
                                  sa.Column('created_at', sa.String(),server_default=sa.text('now()'), nullable=False),
                                     sa.Column('updated_at', sa.String(), server_default=sa.text('now()'), nullable=False),
-                                    sa.PrimaryKeyConstraint('id'),
-                                    sa.UniqueConstraint('email'),
+                                       sa.PrimaryKeyConstraint('id'),
+                                          sa.UniqueConstraint('email')
         )
     pass
 
