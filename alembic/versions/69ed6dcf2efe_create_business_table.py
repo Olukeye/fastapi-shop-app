@@ -24,7 +24,7 @@ def upgrade():
                sa.Column('state', sa.String(), nullable=False),
                   sa.Column('city', sa.String(), nullable=False),
                      sa.Column('description', sa.String(),  nullable=False),
-                        sa.Column('url', sa.String(), nullable=False),
+                        # sa.Column('url', sa.String(), nullable=False),
                            sa.Column('created_at', sa.String(), nullable=False),
                               sa.Column('updated_at', sa.String(), nullable=False),
                                  sa.Column('user_id', sa.BigInteger(), sa.ForeignKey('users.id')),

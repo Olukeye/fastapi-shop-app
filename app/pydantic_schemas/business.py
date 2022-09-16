@@ -6,19 +6,16 @@ from .user import UserOpt
 
 
 class Business(BaseModel):
-    name: str
-    state: str
-    city: str
-    description: str
-    url: str
-    created_at: str = create_customised_datetime()
-    updated_at: str = create_customised_datetime()
+    name: Optional[str] = None
+    state: Optional[str] = None
+    city: Optional[str] = None
+    description: Optional[str] = None
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
     
     
 class CreateBis(Business):
-    class Config:
-        orm_mode = True
-        
+    pass
 
 class UserOpt(BaseModel):
     id: int
@@ -35,7 +32,6 @@ class BusOpt(Business):
     id: int
     user_id:int
     user: UserOpt
-    
     class Config:
         orm_mode = True
         
@@ -50,7 +46,6 @@ class UpdateBizz(BaseModel):
     state: Optional[str] = None
     city: Optional[str] = None
     description: Optional[str] = None
-    url: Optional[str] = None
     updated_at: Optional[str] = None
     
     class Config:

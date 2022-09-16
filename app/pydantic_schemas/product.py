@@ -12,7 +12,7 @@ class Product(BaseModel):
     slug: Optional[str] = None 
     description: Optional[str] = None 
     price: Optional[float] = None 
-    image: Optional[str] = None
+    # image: Optional[str] = None
     category: int 
     created_at: str = create_customised_datetime()
     updated_at: str = create_customised_datetime()
@@ -53,7 +53,7 @@ class ProdUpdate(BaseModel):
     name: str
     description: Optional[str] = None
     price:Optional[float] = None
-    image: UploadFile = File(...)
+    # image:str
     updated_at: Optional[str] = None
     
     class Config:

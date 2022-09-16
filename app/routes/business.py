@@ -15,14 +15,14 @@ async def get_all(db: Session = Depends(get_db), user:int =Depends(get_current_u
     return allBusiness(db=db)
 
 
-@router.post("/business", status_code=status.HTTP_201_CREATED)
-async def new_business(reg:CreateBis, db: Session = Depends(get_db), file: UploadFile = File(...), user:int = Depends(if_user_is_admin)):
-    with open("media/"+file.filename, "wb") as image:
-         shutil.copyfileobj(file.file, image)
+@router.post("/business", status_code=status.HTTP_201_CREATED, response_model=BusOpt)
+async def new_business(reg:CreateBis, db: Session = Depends(get_db), user:int = Depends(if_user_is_admin)):
+    # with open("media/"+file.filename, "wb") as image:
+    #      shutil.copyfileobj(file.file, image)
     
-    url = str("media/"+file.filename)
+    # url = str("media/"+file.filename)
     
-    return create_business(db=db, url=url, reg=reg)
+    return create_business(db=db, user=user, reg=reg)
 
 
 @router.get("/siglebusiness/{id}")

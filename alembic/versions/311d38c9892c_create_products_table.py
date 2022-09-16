@@ -25,7 +25,7 @@ def upgrade():
                      sa.Column('slug', sa.String(), unique=True, nullable=False),
                         sa.Column('description', sa.String(), nullable=False),
                            sa.Column('price', sa.Integer(), nullable=False),
-                              sa.Column('image', sa.String(), nullable=False),
+                              # sa.Column('image', sa.String(), nullable=False),
                                  sa.Column('category_id', sa.BigInteger(), sa.ForeignKey('categories.id', ondelete='CASCADE')),
                                     sa.Column('created_at', sa.String(), server_default=sa.text('now()'), nullable=False),
                                        sa.Column('updated_at', sa.String(), server_default=sa.text('now()'), nullable=False),
