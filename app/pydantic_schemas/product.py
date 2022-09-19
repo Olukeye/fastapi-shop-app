@@ -5,6 +5,7 @@ from pydantic.types import conint
 from typing import Optional, List
 from .category import CatOpt, Category
 
+
 class Product(BaseModel):
     name: Optional[str] = None 
     state: Optional[str] = None 
@@ -25,8 +26,10 @@ class CatOpt(BaseModel):
     id:int
     name: str
     created_at: str = create_customised_datetime()
+    
     class Config:
         orm_mode = True
+        
         
 class ProdOpt(BaseModel):
     name: str
@@ -35,19 +38,22 @@ class ProdOpt(BaseModel):
     slug: str
     description:str
     price:float
- 
     category: int
     # category: CatOpt
     created_at: str = create_customised_datetime()
     updated_at: str=  create_customised_datetime()
+    
     class Config:
         orm_mode = True
+        
         
 class AllProd(BaseModel):
     Product: ProdOpt
     categories: CatOpt 
+    
     class Config:
         orm_mode = True
+
 
 class ProdUpdate(BaseModel):
     name: str
