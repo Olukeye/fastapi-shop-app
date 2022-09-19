@@ -21,7 +21,6 @@ class Product(BaseModel):
 class ProdCreate(Product):
     pass
         
-
 class CatOpt(BaseModel):
     id:int
     name: str
