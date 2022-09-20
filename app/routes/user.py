@@ -4,7 +4,7 @@ from ..repositories.userRepo import register, singleUser, updatUser, verificatio
 from ..utils.oauth2 import get_current_user, verify_access_token
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
-from ..mails.email import send_email
+# from ..mails.email import send_email
 from ..db.database import get_db
 
 

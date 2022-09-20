@@ -5,7 +5,7 @@ from ..pydantic_schemas.user import *
 from ..utils.hashVerify import hash
 from sqlalchemy.orm import Session
 from ..db.database import get_db
-from ..mails.email import send_email
+# from ..mails.email import send_email
 from typing import Dict
 
 
