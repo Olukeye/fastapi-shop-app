@@ -1,10 +1,3 @@
-"""create business table
-
-Revision ID: 30b359410aa9
-Revises: d8e78188551c
-Create Date: 2022-09-23 13:02:29.079837
-
-"""
 from alembic import op
 import sqlalchemy as sa
 
