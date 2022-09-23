@@ -1,10 +1,3 @@
-"""create products table
-
-Revision ID: 40e3818056f9
-Revises: 38655e6540ea
-Create Date: 2022-09-23 13:06:18.189385
-
-"""
 from alembic import op
 import sqlalchemy as sa
 
