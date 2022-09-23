@@ -9,7 +9,6 @@ branch_labels = None
 depends_on = None
 
 
-
 def upgrade():
     op.create_table('users',
         sa.Column('id', sa.BigInteger(), nullable=False),
