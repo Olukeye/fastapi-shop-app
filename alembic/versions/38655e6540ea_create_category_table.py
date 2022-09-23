@@ -1,10 +1,3 @@
-"""create category table
-
-Revision ID: 38655e6540ea
-Revises: 30b359410aa9
-Create Date: 2022-09-23 13:04:59.878739
-
-"""
 from alembic import op
 import sqlalchemy as sa
 
