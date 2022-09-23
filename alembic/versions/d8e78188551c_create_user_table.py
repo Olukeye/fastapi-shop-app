@@ -1,10 +1,3 @@
-"""create user table
-
-Revision ID: d8e78188551c
-Revises: 
-Create Date: 2022-09-23 12:37:18.386801
-
-"""
 from alembic import op
 import sqlalchemy as sa
 
