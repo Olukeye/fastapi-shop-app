@@ -6,7 +6,7 @@ from .db.database import Base, engine
 from .config import settings
 
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
