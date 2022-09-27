@@ -10,10 +10,10 @@ class User(BaseModel):
     username: str
     email: EmailStr
     password: constr(min_length=6, max_length=30)
-    verified: Optional[str]
+    verified: Optional[str] = None
     status: Optional[str] =  None
     role: Optional[str] = None
-    created_at: Optional[str]
+    created_at: Optional[str] = None
     update_at: Optional[str] = None
     
 class CreateUser(User):
