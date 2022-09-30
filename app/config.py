@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     database_name: str
     database_username: str
     secret_key: str
+    driver=str
     algorithm: str
     access_token_expire_minute: int
     # email: str
