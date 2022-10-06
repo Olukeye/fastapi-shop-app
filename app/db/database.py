@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from  ..config import settings
-import pyodbc 
-import sqlalchemy as sa
+# import pyodbc 
+# import sqlalchemy as sa
 
 
 
