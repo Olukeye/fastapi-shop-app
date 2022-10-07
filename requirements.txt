@@ -7,7 +7,7 @@ bcrypt==3.2.2
 blinker==1.5
 certifi==2022.6.15
 cffi==1.15.1
-charset-normalizer==2.1.0  
+charset-normalizer==2.1.0
 click==8.1.3
 colorama==0.4.5
 cryptography==37.0.4
@@ -33,6 +33,8 @@ psycopg2==2.9.3
 pyasn1==0.4.8
 pycparser==2.21
 pydantic==1.9.1
+pymssql==2.2.5
+pyodbc==4.0.34
 python-dotenv==0.20.0
 python-jose==3.3.0
 python-multipart==0.0.5
@@ -45,7 +47,7 @@ sniffio==1.2.0
 SQLAlchemy==1.4.40
 SQLAlchemy-Utils==0.38.3
 starlette==0.19.1
-typing-extensions==4.3.0
+typing_extensions==4.3.0
 ujson==5.4.0
 urllib3==1.26.11
 uvicorn==0.17.6
