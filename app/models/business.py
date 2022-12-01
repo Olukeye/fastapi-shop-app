@@ -1,12 +1,12 @@
 from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey
-from ..pydantic_schemas.business import CreateBis, BusOpt, UpdateBizz
-from ..utils.date_stuff import create_customised_datetime
+from pydantic_schemas.business import CreateBis, BusOpt, UpdateBizz
+from utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
 from sqlalchemy_utils import URLType
 from sqlalchemy.orm import relationship
-from ..db.database import get_db, Base
+from db.database import get_db, Base
 from sqlalchemy.orm import Session
-from ..models.user import User
+from models.user import User
 from typing import Dict, Optional
 
 

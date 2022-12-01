@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from  ..config import settings
+from setttings.config import settings
 # import pyodbc 
 # import sqlalchemy as sa
 
@@ -17,8 +17,10 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-
 Base = declarative_base()
+
+
+session = SessionLocal()
 
  # Dependency
 def get_db():

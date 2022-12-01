@@ -1,9 +1,9 @@
 from fastapi import Response, status, HTTPException, Depends, File, UploadFile
-from ..utils.oauth2 import get_current_user, if_user_is_admin
-from ..utils.model import *
-from ..pydantic_schemas.product import *
+from utils.oauth2 import get_current_user, if_user_is_admin
+from utils.model import *
+from pydantic_schemas.product import *
 from sqlalchemy.orm import Session
-from ..db.database import get_db
+from db.database import get_db
 from typing import Dict
 
 

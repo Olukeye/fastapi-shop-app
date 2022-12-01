@@ -9,7 +9,7 @@ services:
   postgres:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=shongokeye
       - POSTGRES_DB=bill
       
     volumes:

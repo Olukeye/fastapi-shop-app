@@ -1,11 +1,11 @@
 from fastapi import FastAPI, Response, Request, status, HTTPException, Depends, APIRouter, File, UploadFile
-from ..pydantic_schemas.user import CreateUser, User, UserOpt, UserUpdate
-from ..repositories.userRepo import register, singleUser, updatUser, verification
-from ..utils.oauth2 import get_current_user, verify_access_token
+from pydantic_schemas.user import CreateUser, User, UserOpt, UserUpdate
+from repositories.userRepo import register, singleUser, updatUser, verification
+from utils.oauth2 import get_current_user, verify_access_token
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
-# from ..mails.email import send_email
-from ..db.database import get_db
+# from mails.email import send_email
+from db.database import get_db
 
 
 # templates

@@ -1,16 +1,16 @@
 from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey, func
-from ..utils.date_stuff import create_customised_datetime
+from utils.date_stuff import create_customised_datetime
 from sqlalchemy.sql.expression import text
 from sqlalchemy_utils import URLType
 from furl import furl
 from sqlalchemy.orm import relationship
-from ..models.business import Business
-from ..models.category import Category
-from ..db.database import get_db, Base
-from ..pydantic_schemas.product import *
+from models.business import Business
+from models.category import Category
+from db.database import get_db, Base
+from pydantic_schemas.product import *
 from typing import Optional, Dict
 from sqlalchemy.orm import Session
-from ..helper import handle_file_upload
+from helper import handle_file_upload
 
 
 class Product(Base):

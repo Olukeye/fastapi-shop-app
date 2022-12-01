@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Response, requests, status, HTTPException, Depends, APIRouter, File, UploadFile
-from ..pydantic_schemas.business import CreateBis, Business, BusOpt, Allbiz, UpdateBizz
-from ..repositories.busisnessRepo import create_business,  allBusiness, updateBusiness, singleBusiness
-from ..utils.oauth2 import get_current_user, if_user_is_admin
+from pydantic_schemas.business import CreateBis, Business, BusOpt, Allbiz, UpdateBizz
+from repositories.busisnessRepo import create_business,  allBusiness, updateBusiness, singleBusiness
+from utils.oauth2 import get_current_user, if_user_is_admin
 from sqlalchemy.orm import Session
-from ..db.database import get_db
+from db.database import get_db
 from typing import List
 
 

@@ -1,6 +1,6 @@
 from fastapi import Response, status, HTTPException, Depends
-from ..utils.model import create_new_business, get_all_business, update_business, get_a_business
-from ..pydantic_schemas.business import *
+from utils.model import create_new_business, get_all_business, update_business, get_a_business
+from pydantic_schemas.business import *
 from sqlalchemy.orm import Session
 from typing import Dict
 

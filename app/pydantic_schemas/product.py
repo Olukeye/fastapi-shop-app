@@ -1,9 +1,9 @@
 from fastapi import FastAPI,File, UploadFile
 from pydantic import BaseModel,EmailStr, constr
-from ..utils.date_stuff import create_customised_datetime
+from utils.date_stuff import create_customised_datetime
 from pydantic.types import conint
 from typing import Optional, List
-from .category import CatOpt, Category
+from category import CatOpt, Category
 
 
 class Product(BaseModel):
