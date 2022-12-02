@@ -13,9 +13,6 @@ class User(BaseModel):
     verified: Optional[bool]
     status: Optional[str] =  None
     role: Optional[str] = None
-    created_at: Optional[str] = None
-    update_at: Optional[str] = None
-    
 class CreateUser(User):
      pass
  
@@ -24,9 +21,7 @@ class UserOpt(BaseModel):
     username: str
     email: EmailStr
     verified: str
-    created_at: str = create_customised_datetime()
-    updated_at: str = create_customised_datetime()
-     
+
     class Config:
         orm_mode = True
 

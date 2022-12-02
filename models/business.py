@@ -38,7 +38,7 @@ def create_new_business(db: Session, user:int,  reg:CreateBis):
 
 
 
-def get_all_business(db: Session,  limit: int = 3, skip: int = 2, search: Optional[str] = ""):
+def get_all_business(db: Session,  limit: int =10, skip: int=0, search: Optional[str] = ""):
     
     get_all = db.query(Business).filter(Business.name.contains(search)).limit(limit).offset(skip).all()
     

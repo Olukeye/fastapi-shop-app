@@ -1,12 +1,10 @@
-from fastapi import FastAPI, Request
-# from models import user, product, business, category
+from fastapi import FastAPI, Request, status
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from routes import user, auth, business, product, category
 from fastapi.middleware.cors import CORSMiddleware
-# from db.database import Base, engine
-# from setting.config import settings
 
 
-# Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
