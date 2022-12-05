@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
-from routes import user, auth, business, product, category
+from routes import user, auth, business, product, category, order
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -34,7 +34,7 @@ app.include_router(auth.router)
 app.include_router(business.router)
 app.include_router(product.router)
 app.include_router(category.router)
-
+app.include_router(order.router)
 
 
 @app.get("/")
