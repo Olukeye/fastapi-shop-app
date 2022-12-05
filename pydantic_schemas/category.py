@@ -15,9 +15,6 @@ class Category(BaseModel):
     
 class CreateCate(Category):
     pass
-    class Config:
-        orm_mode = True
-        
 
 class CatOpt(BaseModel):
     name: str

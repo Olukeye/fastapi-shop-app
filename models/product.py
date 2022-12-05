@@ -38,14 +38,12 @@ def create_new_product(db: Session, prod:ProdCreate):
 
 
 def get_allProducts(db: Session, skip: int = 0, limit:int =10,  search: Optional[str] = ""):
-    products = db.query(Product).join(Category, Category.business_id == Product.id,
-    isouter=True).group_by(Product.id).filter(Product.name.contains(search)).limit(limit).offset(skip).all()
+    products = db.query(Product).filter(Product.name.contains(search)).limit(limit).offset(skip).all()
     return products
 
 
 def get_single_product(id: int, db: Session):
-    product = db.query(Product).join(Category, Category.business_id == Category.id, 
-    isouter=True).group_by(Product.id).filter(Product.id == id).first()
+    product = db.query(Product).filter(Product.id == id).first()
     return product
 
 
