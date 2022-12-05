@@ -17,7 +17,6 @@ class Category(Base):
     business_id = Column(BigInteger, ForeignKey("businesses.id",  ondelete="CASCADE"), nullable=False)
     created_at = Column(String, server_default=text('now()'))
     updated_at = Column(String, server_default=text('now()'))
-    business = relationship("Business")
     
 
 def create_category(db: Session, cat: CreateCate):
