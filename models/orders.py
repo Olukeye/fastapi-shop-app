@@ -19,7 +19,7 @@ class Order(Base):
     address = Column(String, nullable=True)
     zipcode = Column(Numeric, nullable=True)
     city = Column(String, nullable=True)
-    phone = Column(String, nullable=True)
+    phone = Column(Integer, nullable=True)
     price = Column(Numeric, nullable=False)
     quantity = Column(Integer,  nullable=False)
     created_at = Column(String, nullable=False)

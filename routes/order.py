@@ -12,4 +12,4 @@ router = APIRouter(tags = ['Order'])
 
 @router.post("/order")
 async def new_order( order:CreateOrderModel, db: Session = Depends(get_db), user:int=Depends(get_current_user)):
-    return create_new_oder(db=db, order=order, user=user)
+    return create_new_oder(db=db, order=order)

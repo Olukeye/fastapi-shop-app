@@ -13,11 +13,9 @@ class Order(BaseModel):
     address :Optional[str] = None
     zipcode :Optional[int] = None
     city :Optional[str] = None
-    phone :Optional[str] = None
+    phone :Optional[int] = None
     price :Optional[float] = None
     quantity :Optional[int] = None
-    created_at:Optional[str] = None
-    updated_atse:Optional[str] = None
     
 class CreateOrderModel(Order):
     pass
