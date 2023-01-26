@@ -5,7 +5,7 @@ from typing import Optional
 
 
 class Order(BaseModel):
-    user:int
+    user_id:int
     product_id:int
     first_name:Optional[str] = None
     last_name:Optional[str] = None
@@ -14,7 +14,7 @@ class Order(BaseModel):
     zipcode :Optional[int] = None
     city :Optional[str] = None
     phone :Optional[int] = None
-    price :Optional[float] = None
+    price :Optional[int] = None
     quantity :Optional[int] = None
     
 class CreateOrderModel(Order):
